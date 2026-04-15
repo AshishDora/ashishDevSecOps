@@ -1,0 +1,23 @@
+name: Security scan
+
+on: 
+  push: {}
+  pull_request: 
+    branches: ["main"]
+  workflow_dispatch: {}
+
+jobs: 
+  SAST_scan:
+    name: SAST code scanning
+    runs-on: ubuntu-latest
+  
+    steps:
+    - name: checkout Code
+      uses: actions/checkout@v4
+      with:
+        full-depth: 0
+
+      name: sonarCube scan
+      uses: SonarSource/sonarqube-scan-action@v7.0.0
+      env:
+      SONARCUBE_API_KEY:${{secrets.SONARCUBE_API_KEY}}
