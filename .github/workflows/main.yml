@@ -15,7 +15,7 @@ jobs:
       - name: checkout Code
         uses: actions/checkout@v4
         with:
-         full-depth: 0
+         fetch-depth: 0
 
       - name: sonarCube scan
         uses: SonarSource/sonarqube-scan-action@v7.0.0
