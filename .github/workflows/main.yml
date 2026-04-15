@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-latest
   
     steps:
-    - name: checkout Code
-      uses: actions/checkout@v4
-      with:
-        full-depth: 0
+      - name: checkout Code
+        uses: actions/checkout@v4
+        with:
+         full-depth: 0
 
-      name: sonarCube scan
-      uses: SonarSource/sonarqube-scan-action@v7.0.0
-      env:
-      SONARCUBE_API_KEY:${{secrets.SONARCUBE_API_KEY}}
+      - name: sonarCube scan
+        uses: SonarSource/sonarqube-scan-action@v7.0.0
+        env:
+          SONARCUBE_API_KEY: ${{secrets.SONAR_ACTIONS_SCAN}}
