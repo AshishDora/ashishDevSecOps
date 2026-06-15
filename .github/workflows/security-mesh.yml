@@ -1,0 +1,27 @@
+name: Enterprise DevSecOps Security Mesh
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  secrets_governance:
+    name: GitGuardian Secret Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hardened Repository Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Execute GitGuardian Shield Engine
+        uses: GitGuardian/ggshield-action@v1
+        env:
+          GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
