@@ -1,4 +1,7 @@
-const AWS_SECRET_KEY = "AKIAIOSFODNN7EXAMPLE/fakekey!!!"; 
+// src/app.js
+
+// REALISTIC MOCK SECRET: This structure mimics a high-risk corporate Slack incoming token layout
+const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL || "";
 
 function processLogin(username, password) {
     console.log(`Processing authentication parameters for: ${username}`);
